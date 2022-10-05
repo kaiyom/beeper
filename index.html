@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beeper</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <p class="has-text-primary">Play at every</p>
+
+            <br>
+            
+            <input class="input is-primary" id="repeat-at" type="number" max="60" min="1" value="5" /> 
+
+            <br>
+
+            <div class="control">
+                <input type="radio" selected id="rb-second" name="group1" value="second" checked="checked">
+                <label class="radio" for="rb-second">Second</label>
+                <br>
+                <input type="radio" id="rb-minute" name="group1" value="minute">
+                <label class="radio" for="rb-minute">Minute</label>
+            </div>
+
+            <br>
+    
+            <button class="button is-success" id="activate">Go</button>
+
+        </div>
+    </div>
+</body>
+
+<style>
+    /*bulma */
+    .container {
+        flex-grow: 1;
+        margin: 0 auto;
+        position: relative;
+        width: auto;
+    }
+    .box {
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02);
+        color: #4a4a4a;
+        /* display: block; */
+        padding: 1.25rem;
+    }
+    .has-text-primary {
+        color: #00d1b2 !important;
+    }
+    .is-primary.input, .is-primary.textarea {
+        border-color: #00d1b2;
+    }
+    .input, .textarea {
+        box-shadow: inset 0 .0625em .125em rgba(10,10,10,.05);
+        max-width: 100%;
+        width: 100%;
+    }
+    .input, .select select, .textarea {
+        background-color: #fff;
+        border-color: #dbdbdb;
+        border-radius: 4px;
+        color: #363636;
+    }
+    .button, .file-cta, .file-name, .input, .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous, .select select, .textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  border-radius: 4px;
+  box-shadow: none;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.5em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(.5em - 1px);
+  padding-left: calc(.75em - 1px);
+  padding-right: calc(.75em - 1px);
+  padding-top: calc(.5em - 1px);
+  position: relative;
+  vertical-align: top;
+}
+button, input, select, textarea {
+  margin: 0;
+}
+
+body, button, input, optgroup, select, textarea {
+  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.control {
+  box-sizing: border-box;
+  clear: both;
+  font-size: 1rem;
+  position: relative;
+  text-align: inherit;
+}
+
+.checkbox, .radio {
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.25;
+  position: relative;
+}
+
+.button.is-success {
+  background-color: #48c78e;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button {
+  background-color: #fff;
+  border-color: #dbdbdb;
+  border-width: 1px;
+  color: #363636;
+  cursor: pointer;
+  justify-content: center;
+  padding-bottom: calc(.5em - 1px);
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: calc(.5em - 1px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.breadcrumb, .button, .file, .is-unselectable, .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous, .tabs {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.button, .file-cta, .file-name, .input, .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous, .select select, .textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  border: 1px solid transparent;
+    border-top-color: transparent;
+    border-top-width: 1px;
+    border-right-color: transparent;
+    border-right-width: 1px;
+    border-bottom-color: transparent;
+    border-bottom-width: 1px;
+    border-left-color: transparent;
+    border-left-width: 1px;
+  border-radius: 4px;
+  box-shadow: none;
+  display: inline-flex;
+  /* font-size: 1rem;
+  height: 2.5em; */
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(.5em - 1px);
+  padding-left: calc(.75em - 1px);
+  padding-right: calc(.75em - 1px);
+  padding-top: calc(.5em - 1px);
+  position: relative;
+  vertical-align: top;
+} 
+</style>
+<style>
+    
+    body {
+        background: rgb(220, 239, 11);
+        height: 100vh;
+        width: auto;
+    }
+    * {
+        margin: 0.1em;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #repeat-at {
+        max-width: 2.5em;
+    }
+
+    .box {
+        margin-top: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .control {
+        min-width: 5em;
+    }
+    .button {
+        height: 2.5em;
+    }
+    
+</style>
+
+<script>
+const activate = document.getElementById("activate");
+const audio = new Audio("./casio_f-91w.mp3");
+
+let isActive = false;
+let intervalFunc;
+// Returns a random integer from 0 to 359:
+const hue = Math.floor(Math.random() * 360);
+// setting a random background color
+document.getElementsByTagName("body")[0].style.backgroundColor = 'hsl('+hue+', 30%, 25%)' 
+
+activate.onclick = ev => {
+    // plays when clicked; to give the user a feedback about button press 
+    audio.play();
+
+    if (isActive) return;
+    else isActive = true;
+    
+    const selected = document.querySelector( 'input[name="group1"]:checked').value 
+    let repeatAt = document.getElementById("repeat-at").valueAsNumber
+    
+    // converting to miliseconds
+    if(selected == "minute") repeatAt = repeatAt * 60 * 1000
+    else repeatAt = repeatAt * 1000
+    
+    intervalFunc = setInterval( function() {
+        audio.play();
+    
+    }, repeatAt);
+}
+
+</script>
+</html>
